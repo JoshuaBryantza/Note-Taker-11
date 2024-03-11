@@ -45,13 +45,15 @@ const saveNote = (note) =>
     body: JSON.stringify(note)
   });
 
-const deleteNote = (id) =>
+const deleteNote = function (id) {
+  console.log('word' + id);
   fetch(`/api/notes/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
     }
-  });
+  })
+};
 
 const renderActiveNote = () => {
   hide(saveNoteBtn);
@@ -129,6 +131,7 @@ const handleRenderBtns = () => {
 
 // Render the list of note titles
 const renderNoteList = async (notes) => {
+  console.log(notes);
   let jsonNotes = await notes.json();
   if (window.location.pathname === '/notes') {
     noteList.forEach((el) => (el.innerHTML = ''));
@@ -172,14 +175,22 @@ const renderNoteList = async (notes) => {
   jsonNotes.forEach((note) => {
     const li = createLi(note.title);
     li.dataset.note = JSON.stringify(note);
+    li.addEventListener('click', populateNotes(note));
 
     noteListItems.push(li);
   });
 
   if (window.location.pathname === '/notes') {
     noteListItems.forEach((note) => noteList[0].append(note));
+    // noteListItems.forEach((note) => note.addEventListener('click', populateNotes(note)));
   }
 };
+
+function populateNotes(attrData) {
+  console.log(attrData);
+  // activeNote = JSON.parse(attrData);
+  // renderActiveNote();
+}
 
 // Gets notes from the db and renders them to the sidebar
 const getAndRenderNotes = () => getNotes().then(renderNoteList);

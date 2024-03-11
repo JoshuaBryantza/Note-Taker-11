@@ -11,8 +11,31 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.post('/api/notes', (req, res) => {
+  console.log(req.body);
   notesData.push(req.body);
-  writeFile("./db/db.json", JSON.stringify(notesData));
+  writeFile("./db/db.json", JSON.stringify(notesData), (err) =>
+    err
+      ? console.error(err)
+      : console.log(
+        `db update suc`
+      ));
+
+  // writeFile("./db/db2.json", "gang gang");
+  res.json(`${req} request processed`);
+});
+
+app.delete('/api/notes/:id', (req, res) => {
+  const noteIndex = notesData.findIndex(x => x.id == req.params.id);
+  notesData.splice(noteIndex, 1);
+  // notesData.push(req.body);
+  writeFile("./db/db.json", JSON.stringify(notesData), (err) =>
+    err
+      ? console.error(err)
+      : console.log(
+        `db update suc`
+      ));
+
+  // writeFile("./db/db2.json", "gang gang");
   res.json(`${req} request processed`);
 });
 
