@@ -52,7 +52,10 @@ const deleteNote = function (id) {
     headers: {
       'Content-Type': 'application/json'
     }
-  })
+  }).then(() => {
+    getAndRenderNotes();
+    renderActiveNote();
+  });
 };
 
 const renderActiveNote = () => {
@@ -97,10 +100,7 @@ const handleNoteDelete = (e) => {
     activeNote = {};
   }
 
-  deleteNote(noteId).then(() => {
-    getAndRenderNotes();
-    renderActiveNote();
-  });
+  deleteNote(noteId);
 };
 
 // Sets the activeNote and displays it

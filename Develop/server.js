@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const notesData = require('./db/db.json');
 const { writeFile } = require('fs');
+const { v4: uuidv4 } = require('uuid');
 const PORT = 3001;
 
 const app = express();
@@ -9,10 +10,16 @@ const app = express();
 app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+console.log(uuidv4());
 
 app.post('/api/notes', (req, res) => {
-  console.log(req.body);
-  notesData.push(req.body);
+  console.log(uuidv4());
+  const note = {
+    id: uuidv4(),
+    title: req.body.title,
+    text: req.body.text
+  };
+  notesData.push(note);
   writeFile("./db/db.json", JSON.stringify(notesData), (err) =>
     err
       ? console.error(err)
