@@ -8,3 +8,6 @@
 .vscode/settings.json
 .vscode/keybindings.json
 .vscode/launch.json
+
+# Ignore node_modules directory
+node_modules/
