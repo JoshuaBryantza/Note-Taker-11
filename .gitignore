@@ -1,0 +1,10 @@
+.DS_Store
+# Visual Studio Code files
+.vscode/
+.vs/
+*.code-workspace
+
+# User-specific VS Code settings
+.vscode/settings.json
+.vscode/keybindings.json
+.vscode/launch.json
