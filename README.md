@@ -1,19 +1,16 @@
-# Note Taker 
+# Note Taker
 
+## Description
 
-## Description 
-
-- My motivation was a build an application that can help me make and keep track of notes 
-- I built this to help me take notes and delete notes dynamically 
+- My motivation was a build an application that can help me make and keep track of notes
+- I built this to help me take notes and delete notes dynamically
 - The problem I solved is that I no longer have to keep track of papers or note pads that get messes or lost.
 
+## Installation
 
-## Installation 
-
-- Once you have downloaded this repo, all you would have to do in to install the npm package by running this command in the terminal <npm i>
-- When you have completed the above step you would have to run this next command to start the server <npm start>
+- Once you have downloaded this repo, all you would have to do is to install the npm package by running this command in the terminal 'npm install'
+- When you have completed the above step you would have to run this next command to start the server 'npm start'
 - Once this is done open <http://localhost:3001> on your browser
-
 
 ## Screenshots
 
